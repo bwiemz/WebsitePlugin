@@ -798,6 +798,17 @@ body.has-navbar {
   margin: 0 auto;
   padding: 0 var(--spacing-md);
   gap: 2rem;
+  min-height: 100vh;
+  position: relative; /* Add position relative */
+}
+
+/* Create a placeholder for the fixed sidebar to maintain layout */
+.shop-layout::after {
+  content: '';
+  display: block;
+  width: 280px;
+  grid-column: 2;
+  height: 1px; /* Just needs to exist to maintain the grid */
 }
 
 .shop-content {
@@ -835,7 +846,55 @@ body.has-navbar {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-top: 1.5rem; /* Adjusted to better align with tabs */
+  position: fixed;
+  /* top position will be set by JavaScript */
+  height: fit-content;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  /* Hide scrollbar but allow scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  /* Calculate right position based on layout */
+  right: calc((100% - 1400px) / 2 + var(--spacing-md));
+  /* Use transform for smoother transitions */
+  transform: translateZ(0);
+  will-change: transform, top;
+  z-index: 10; /* Ensure it stays above other content */
+  /* No transition by default to prevent jumping */
+  transition: none;
+}
+
+/* Add smooth transition class that will be toggled by JavaScript */
+.avatar-preview-section.smooth-transition {
+  transition: top 0.2s ease-out;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.avatar-preview-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Home page specific styles for sidebar */
+.shop-container .avatar-preview-section .avatar-preview-card,
+.shop-container .avatar-preview-section .payment-goal-card {
+  margin-bottom: 1.5rem;
+}
+
+.shop-container .avatar-preview-section .payment-goal-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Adjust for different screen heights - remove since JavaScript will handle it */
+@media (max-height: 800px) {
+  .shop-container .avatar-preview-section {
+    /* top position will be set by JavaScript */
+  }
+}
+
+@media (max-height: 600px) {
+  .shop-container .avatar-preview-section {
+    /* top position will be set by JavaScript */
+  }
 }
 
 .avatar-preview-card {
@@ -1066,15 +1125,30 @@ body.has-navbar {
 }
 
 /* Responsive layout */
+@media (max-width: 1400px) {
+  .avatar-preview-section {
+    right: var(--spacing-md); /* Adjust for smaller screens */
+  }
+}
+
 @media (max-width: 1024px) {
   .shop-layout {
     grid-template-columns: 1fr;
   }
   
+  .shop-layout::after {
+    display: none; /* Remove placeholder on mobile */
+  }
+  
   .avatar-preview-section {
+    position: static !important; /* Force static positioning on mobile */
     width: 100%;
     max-width: 320px;
-    margin: 0 auto 2rem auto; /* Add bottom margin for spacing on mobile */
+    margin: 0 auto 2rem auto;
+    max-height: none;
+    overflow-y: visible;
+    right: auto;
+    transition: none; /* Remove transition on mobile */
   }
 }
 
@@ -3048,33 +3122,35 @@ footer {
     letter-spacing: 0.5px;
     text-transform: uppercase;
     font-size: 0.9rem;
-    background: var(--brand-base);
-    color: var(--type-light);
-    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--radius-lg);
     transition: var(--transition-fast);
 }
 
-.home-rank-grid .shadow-enchanter .btn-primary {
-    background: var(--rank-shadow);
-}
-
-.home-rank-grid .astral-guardian .btn-primary {
-    background: var(--rank-astral);
-}
-
-.home-rank-grid .citizen .btn-primary {
-    background: var(--rank-citizen);
-}
-
+.home-rank-grid .shadow-enchanter .btn-primary,
+.home-rank-grid .astral-guardian .btn-primary,
+.home-rank-grid .citizen .btn-primary,
 .home-rank-grid .divine-ruler .btn-primary {
-    background: var(--rank-divine);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .home-rank-grid .btn-primary:hover {
-    background: var(--brand-dark);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-1px);
     box-shadow: var(--fx-shadow-md);
+}
+
+.home-rank-grid .shadow-enchanter .btn-primary:hover,
+.home-rank-grid .astral-guardian .btn-primary:hover,
+.home-rank-grid .citizen .btn-primary:hover,
+.home-rank-grid .divine-ruler .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    filter: none;
 }
 
 .home-rank-grid .shadow-enchanter .btn-primary:hover {
@@ -3141,5 +3217,77 @@ footer {
 .home-rank-grid .rank-position:after {
     content: '•';
     margin-left: 0.3rem;
+}
+
+.home-rank-grid .shadow-enchanter .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    filter: none;
+}
+
+.home-rank-grid .astral-guardian .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    filter: none;
+}
+
+.home-rank-grid .citizen .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    filter: none;
+}
+
+.home-rank-grid .divine-ruler .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    filter: none;
+}
+
+/* Grid Layouts */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+    .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Home page specific styles for sidebar */
+.shop-container .avatar-preview-section {
+  top: 6rem; /* Adjust top position to align with the first tab-bar */
+}
+
+.shop-container .avatar-preview-section .avatar-preview-card,
+.shop-container .avatar-preview-section .payment-goal-card {
+  margin-bottom: 1.5rem;
+}
+
+.shop-container .avatar-preview-section .payment-goal-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Adjust for different screen heights */
+@media (max-height: 800px) {
+  .shop-container .avatar-preview-section {
+    top: 4rem; /* Less top space on shorter screens */
+  }
+}
+
+@media (max-height: 600px) {
+  .shop-container .avatar-preview-section {
+    top: 2rem; /* Even less top space on very short screens */
+  }
 }
 
