@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enderfall - Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation will be loaded by shared.js -->
+
+    <main class="shop-container fade-in">
+        <div class="shop-header slide-in">
+            <h1>Enderfall</h1>
+            <p>Official Store - Choose from our selection of exclusive ranks and upgrades</p>
+        </div>
+
+        <div class="shop-layout">
+            <div class="shop-content">
+                <!-- Tab Bar Container -->
+                <div id="shopTabs"></div>
+            </div>
+            
+            <!-- Avatar Preview Section -->
+            <div class="avatar-preview-section">
+                <div class="avatar-preview-card">
+                    <div class="tab-bar-nav">
+                        <h3>Your Minecraft Avatar</h3>
+                    </div>
+                    <div class="tab-bar-content">
+                        <div id="avatarPreview" class="avatar-preview">
+                            <!-- Avatar will be loaded here -->
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div id="avatarActions">
+                            <button id="linkAccountBtn" class="btn btn-primary" style="display: none;">
+                                <i class="fas fa-link"></i> Link Minecraft Account
+                            </button>
+                            <p class="link-info">Link your Minecraft account in your profile settings to see your avatar here.</p>
+                            <div id="previewControls" style="display: none;">
+                                <label for="previewRankSelect" class="preview-label">Preview Rank:</label>
+                                <select id="previewRankSelect" class="preview-select">
+                                    <option value="none">No Rank</option>
+                                    <!-- Serverwide Ranks -->
+                                    <optgroup label="Serverwide Ranks">
+                                        <option value="shadow-enchanter">Shadow Enchanter</option>
+                                        <option value="void-walker">Void Walker</option>
+                                        <option value="ethereal-warden">Ethereal Warden</option>
+                                        <option value="astral-guardian">Astral Guardian</option>
+                                    </optgroup>
+                                    <!-- Towny Ranks -->
+                                    <optgroup label="Towny Ranks">
+                                        <option value="citizen">Citizen</option>
+                                        <option value="merchant">Merchant</option>
+                                        <option value="councilor">Councilor</option>
+                                        <option value="mayor">Mayor</option>
+                                        <option value="governor">Governor</option>
+                                        <option value="noble">Noble</option>
+                                        <option value="duke">Duke</option>
+                                        <option value="king">King</option>
+                                        <option value="divine-ruler">Divine Ruler</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Goal Section -->
+                <div class="payment-goal-card">
+                    <div class="tab-bar-nav">
+                        <h3>Server Payment Goal</h3>
+                    </div>
+                    <div class="tab-bar-content">
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 15%;"></div>
+                            </div>
+                            <div class="progress-text">15% Complete</div>
+                        </div>
+                        <p class="goal-info">Help us reach our monthly server costs!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchase Modal -->
+        <div id="purchaseModal" class="purchase-modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Confirm Purchase</h2>
+                <div class="purchase-details">
+                    <p>You are about to purchase:</p>
+                    <p class="rank-name" id="rankName"></p>
+                    <p class="price">£<span id="rankPrice"></span></p>
+                </div>
+                <button class="btn btn-primary" onclick="confirmPurchase()">Confirm Purchase</button>
+            </div>
+        </div>
+
+        <!-- Toast Container -->
+        <div id="toastContainer"></div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/shared.js"></script>
+    <script src="/js/components/tab-bar.js"></script>
+    <script src="/js/shop.js"></script>
+</body>
+</html>

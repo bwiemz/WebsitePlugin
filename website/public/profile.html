@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enderfall - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation will be loaded by shared.js -->
+    
+    <main class="shop-container fade-in">
+        <div class="shop-header slide-in">
+            <h1>Your Profile</h1>
+            <p>Manage your account, view your ranks, and track your purchases</p>
+        </div>
+
+        <div class="container">
+            <!-- Profile Header Section -->
+            <section class="tab-bar">
+                <div class="tab-bar-nav">
+                    <h3>Profile Overview</h3>
+                </div>
+                <div class="tab-bar-content">
+                    <div class="profile-info">
+                        <img src="" alt="Profile Avatar" class="profile-avatar">
+                        <div class="profile-details">
+                            <h1 class="profile-username"></h1>
+                            <p class="profile-discord"></p>
+                            <p class="profile-minecraft"></p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-crown"></i>
+                            <span class="stat-value active-ranks">0</span>
+                            <span class="stat-label">Active Ranks</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="stat-value total-purchases">0</span>
+                            <span class="stat-label">Purchases</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-calendar"></i>
+                            <span class="stat-value member-since"></span>
+                            <span class="stat-label">Member Since</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid grid-2">
+                <!-- Active Ranks Section -->
+                <section class="tab-bar">
+                    <div class="tab-bar-nav">
+                        <h3>Active Ranks</h3>
+                    </div>
+                    <div class="tab-bar-content">
+                        <div id="activeRanks" class="ranks-list">
+                            <!-- Ranks will be loaded dynamically -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section class="tab-bar">
+                    <div class="tab-bar-nav">
+                        <h3>Settings</h3>
+                    </div>
+                    <div class="tab-bar-content">
+                        <form id="settingsForm" class="settings-form">
+                            <div class="form-group">
+                                <label class="form-label" for="minecraftUsername">Minecraft Username</label>
+                                <input type="text" id="minecraftUsername" class="form-control" placeholder="Enter your Minecraft username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Notifications</label>
+                                <div class="toggle-group">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="emailNotifications">
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Email Notifications</span>
+                                    </label>
+                                    <label class="toggle">
+                                        <input type="checkbox" id="discordNotifications">
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Discord Notifications</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Purchase History Section -->
+            <section class="tab-bar">
+                <div class="tab-bar-nav">
+                    <h3>Purchase History</h3>
+                </div>
+                <div class="tab-bar-content">
+                    <div class="purchase-history">
+                        <table class="purchases-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Rank</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="purchaseHistory">
+                                <!-- Purchase history will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer removed - now loaded by shared.js -->
+
+    <!-- Load shared JavaScript -->
+    <script src="/js/shared.js"></script>
+    <script src="/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enderfall - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation will be loaded by shared.js -->
+    
+    <main class="shop-container fade-in">
+        <div class="shop-header slide-in">
+            <h1>Enderfall</h1>
+            <p>Experience Minecraft like never before with our unique ranks and features</p>
+        </div>
+
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="tab-bar">
+                <div class="tab-bar-nav">
+                    <h3>Welcome to Enderfall</h3>
+                </div>
+                <div class="tab-bar-content">
+                    <div class="hero-content">
+                        <p class="hero-subtitle">Join our thriving community and unlock amazing perks with our unique ranks</p>
+                        <div class="hero-buttons" style="margin-top: 2rem;">
+                            <a href="/shop.html" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Browse Ranks
+                            </a>
+                            <a href="#features" class="btn btn-secondary">
+                                <i class="fas fa-star"></i>
+                                View Features
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="tab-bar">
+                <div class="tab-bar-nav">
+                    <h3>Server Features</h3>
+                </div>
+                <div class="tab-bar-content">
+                    <div class="grid grid-3">
+                        <div class="feature-card payment-goal-card">
+                            <div class="tab-bar-nav">
+                                <h3>Unique Ranks</h3>
+                            </div>
+                            <div class="tab-bar-content">
+                                <div class="feature-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <p class="goal-info">From Shadow Enchanter to Divine Ruler, unlock amazing perks and abilities</p>
+                            </div>
+                        </div>
+                        <div class="feature-card payment-goal-card">
+                            <div class="tab-bar-nav">
+                                <h3>Towny System</h3>
+                            </div>
+                            <div class="tab-bar-content">
+                                <div class="feature-icon">
+                                    <i class="fas fa-city"></i>
+                                </div>
+                                <p class="goal-info">Build your empire with our advanced Towny system and nation management</p>
+                            </div>
+                        </div>
+                        <div class="feature-card payment-goal-card">
+                            <div class="tab-bar-nav">
+                                <h3>Custom Features</h3>
+                            </div>
+                            <div class="tab-bar-content">
+                                <div class="feature-icon">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <p class="goal-info">Enjoy custom enchantments, particles, and special abilities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Ranks Section -->
+            <section class="tab-bar">
+                <div class="tab-bar-nav">
+                    <h3>Featured Ranks</h3>
+                </div>
+                <div class="tab-bar-content">
+                    <div class="rank-grid home-rank-grid">
+                        <!-- Rank cards will be dynamically loaded from JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="tab-bar">
+                <div class="tab-bar-nav">
+                    <h3>Join Our Community</h3>
+                </div>
+                <div class="tab-bar-content">
+                    <div class="grid grid-3">
+                        <div class="feature-card payment-goal-card">
+                            <div class="tab-bar-nav">
+                                <h3>Discord</h3>
+                            </div>
+                            <div class="tab-bar-content">
+                                <div class="feature-icon">
+                                    <i class="fab fa-discord"></i>
+                                </div>
+                                <p class="goal-info">Join our Discord community for updates, events, and to connect with other players</p>
+                                <div class="card-button-container">
+                                    <a href="https://discord.gg/ellrijord" target="_blank" class="btn btn-primary">Join Discord</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card payment-goal-card">
+                            <div class="tab-bar-nav">
+                                <h3>Server IP</h3>
+                            </div>
+                            <div class="tab-bar-content">
+                                <div class="feature-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <p class="goal-info">Connect to our server using the IP: play.enderfall.com</p>
+                                <div class="card-button-container">
+                                    <button id="copyIpBtn" class="btn btn-primary">Copy IP</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card payment-goal-card">
+                            <div class="tab-bar-nav">
+                                <h3>Get Started</h3>
+                            </div>
+                            <div class="tab-bar-content">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <p class="goal-info">Browse our selection of ranks and upgrades in our shop</p>
+                                <div class="card-button-container">
+                                    <a href="/shop.html" class="btn btn-primary">Visit Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer removed - now loaded by shared.js -->
+
+    <!-- Load shared JavaScript -->
+    <script src="/js/shared.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
